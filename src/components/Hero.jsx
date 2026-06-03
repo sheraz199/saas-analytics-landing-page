@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
 
 const Hero = () => {
-  // Animation variants for the staggered text reveal
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
   };
 
   const itemVariants = {
@@ -21,12 +17,7 @@ const Hero = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* Staggered Text Container */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
           <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-full px-3 py-1 md:px-4 md:py-1.5 mb-6 md:mb-8">
             <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[10px] md:text-xs font-medium text-slate-300 tracking-wide">Introducing Nexus Analytics 2.0</span>
@@ -53,16 +44,12 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Floating Mockup Dashboard */}
+        {/* FIXED: Dashboard Grid logic changed to force 2 columns on all views */}
         <motion.div 
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          // This animate array creates the continuous floating effect
+          initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
           whileHover={{ scale: 1.02 }}
-          className="relative mx-auto max-w-5xl rounded-xl md:rounded-2xl border border-slate-800 bg-slate-950/60 p-2 md:p-4 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-sm"
+          className="relative mx-auto max-w-4xl rounded-xl md:rounded-2xl border border-slate-800 bg-slate-950/60 p-2 md:p-4 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-sm"
         >
-          {/* Mockup Top Window Control Bar */}
           <div className="flex items-center justify-between border-b border-slate-900 pb-2 md:pb-3 mb-3 md:mb-4 px-2">
             <div className="flex space-x-1.5 md:space-x-2">
               <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-rose-500/40"></div>
@@ -75,35 +62,27 @@ const Hero = () => {
             <div className="w-8 md:w-12"></div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 text-left">
-            <div className="col-span-2 md:col-span-1 bg-slate-900/40 border border-slate-900 rounded-lg md:rounded-xl p-3 md:p-5">
+          {/* Grid is now strictly grid-cols-2 */}
+          <div className="grid grid-cols-2 gap-2 md:gap-4 text-left">
+            <div className="col-span-2 bg-slate-900/40 border border-slate-900 rounded-lg md:rounded-xl p-4 md:p-6">
               <span className="text-[10px] md:text-xs font-semibold text-slate-500 tracking-wider uppercase">Active Influx Rate</span>
-              <div className="text-xl md:text-3xl font-bold text-white mt-1">94.2k <span className="text-sm font-normal text-slate-500">/sec</span></div>
-              <div className="w-full bg-slate-800 h-1 md:h-1.5 rounded-full mt-2 md:mt-4 overflow-hidden">
-                <motion.div 
-                  initial={{ width: 0 }} animate={{ width: "78%" }} transition={{ duration: 1.5, delay: 1.2 }}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full"
-                ></motion.div>
+              <div className="text-2xl md:text-4xl font-bold text-white mt-1">94.2k <span className="text-sm font-normal text-slate-500">/sec</span></div>
+              <div className="w-full bg-slate-800 h-1.5 md:h-2 rounded-full mt-3 md:mt-5 overflow-hidden">
+                <motion.div initial={{ width: 0 }} animate={{ width: "78%" }} transition={{ duration: 1.5, delay: 1.2 }} className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full"></motion.div>
               </div>
             </div>
-            <div className="bg-slate-900/40 border border-slate-900 rounded-lg md:rounded-xl p-3 md:p-5">
+            <div className="col-span-1 bg-slate-900/40 border border-slate-900 rounded-lg md:rounded-xl p-3 md:p-5">
               <span className="text-[10px] md:text-xs font-semibold text-slate-500 tracking-wider uppercase">Load</span>
               <div className="text-xl md:text-3xl font-bold text-emerald-400 mt-1">Optimal</div>
               <div className="w-full bg-slate-800 h-1 md:h-1.5 rounded-full mt-2 md:mt-4 overflow-hidden">
-                <motion.div 
-                  initial={{ width: 0 }} animate={{ width: "12%" }} transition={{ duration: 1.5, delay: 1.4 }}
-                  className="bg-emerald-400 h-full rounded-full animate-pulse"
-                ></motion.div>
+                <motion.div initial={{ width: 0 }} animate={{ width: "12%" }} transition={{ duration: 1.5, delay: 1.4 }} className="bg-emerald-400 h-full rounded-full animate-pulse"></motion.div>
               </div>
             </div>
-            <div className="bg-slate-900/40 border border-slate-900 rounded-lg md:rounded-xl p-3 md:p-5">
+            <div className="col-span-1 bg-slate-900/40 border border-slate-900 rounded-lg md:rounded-xl p-3 md:p-5">
               <span className="text-[10px] md:text-xs font-semibold text-slate-500 tracking-wider uppercase">Triggers</span>
               <div className="text-xl md:text-3xl font-bold text-white mt-1">1,482</div>
               <div className="w-full bg-slate-800 h-1 md:h-1.5 rounded-full mt-2 md:mt-4 overflow-hidden">
-                <motion.div 
-                  initial={{ width: 0 }} animate={{ width: "55%" }} transition={{ duration: 1.5, delay: 1.6 }}
-                  className="bg-gradient-to-r from-teal-400 to-blue-500 h-full rounded-full"
-                ></motion.div>
+                <motion.div initial={{ width: 0 }} animate={{ width: "55%" }} transition={{ duration: 1.5, delay: 1.6 }} className="bg-gradient-to-r from-teal-400 to-blue-500 h-full rounded-full"></motion.div>
               </div>
             </div>
           </div>
