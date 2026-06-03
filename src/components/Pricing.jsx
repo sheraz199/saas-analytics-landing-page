@@ -47,11 +47,15 @@ const Pricing = () => {
           </div>
         </div>
 
-        {/* FIXED: md:overflow-visible prevents scaling clipping, py-10 adds breathing room, mx-auto centers the grid */}
+        {/* 
+          FIXED CONTAINER: 
+          - Removed sm:mx-0 and -mx-4 to allow mx-auto to center properly on desktop.
+          - Uses md:grid to cleanly swap from flex carousel to 3-column grid at 768px.
+        */}
         <div 
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory py-6 md:py-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden items-stretch max-w-5xl mx-auto -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory py-6 md:py-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden items-stretch max-w-5xl mx-auto w-full"
         >
           {plans.map((plan, index) => (
             <div 
